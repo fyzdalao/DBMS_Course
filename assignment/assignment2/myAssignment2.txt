@@ -1,0 +1,46 @@
+1.
+
+(a) B
+(b) AB
+(c) D
+(d) ABD
+(e) AD
+
+2.
+
+(a)
+select PC.model except select PC1.model from PC as PC1 join PC as PC2 on (PC1.speed < PC2.speed);
+
+(b)
+select PC1.model from PC as PC1 left outer join PC as PC2 on (PC1.speed < PC2.speed) where PC2.model is null;
+
+(c)
+select model from PC where speed in (select max(speed) from PC);
+
+(d)
+select model from PC where speed = (select max(speed) from PC);
+
+(e)
+select model from PC where speed >= (select max(speed) from PC);
+
+(f)
+select model from PC as PC1 where not exists (select * from PC as PC2 where PC2.speed > PC1.speed);
+
+3.
+
+(a)
+with P1 as ( select maker, count(distinct Printer.type) from Product join Printer using(model) group by maker having count(distinct Printer.type) = 2) select maker from P1;
+
+(b)
+select maker from product as P1 where exists(select * from Printer as P2 where P1.model = P2.model and P2.type = 'ink-jet') INTERSECT
+select maker from product as P3 where exists(select * from Printer as P4 where P3.model = P4.model and P4.type = 'laser');
+
+4.
+
+(a)
+update PC set price = price+price*0.10 where model = any (select model from Product where maker = 'A');
+
+(b)
+update PC set price = price+price*0.10 where model in (select model from Product where maker = 'A');
+
+
