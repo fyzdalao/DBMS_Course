@@ -44,3 +44,4 @@ update PC set price = price+price*0.10 where model = any (select model from Prod
 update PC set price = price+price*0.10 where model in (select model from Product where maker = 'A');
 
 
+
