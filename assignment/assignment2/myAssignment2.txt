@@ -2,7 +2,7 @@
 
 (a) B
 (b) AB
-(c) D
+(c) A
 (d) ABD
 (e) AD
 
