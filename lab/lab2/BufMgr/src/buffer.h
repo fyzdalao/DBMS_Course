@@ -188,7 +188,7 @@ class BufMgr
 	/**
    * Advance clock to next frame in the buffer pool
 	 */
-  bool advanceClock();
+  void advanceClock();
 
 	/**
 	 * Allocate a free frame.  
